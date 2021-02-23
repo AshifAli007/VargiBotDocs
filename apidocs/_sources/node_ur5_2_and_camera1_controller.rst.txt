@@ -1,0 +1,7 @@
+node\_ur5\_2\_and\_camera1\_controller module
+=============================================
+
+.. automodule:: node_ur5_2_and_camera1_controller
+    :members:
+    :undoc-members:
+    :show-inheritance:

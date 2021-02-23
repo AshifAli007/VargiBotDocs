@@ -1,0 +1,7 @@
+node\_ur5\_1\_pick\_and\_place\_controller module
+=================================================
+
+.. automodule:: node_ur5_1_pick_and_place_controller
+    :members:
+    :undoc-members:
+    :show-inheritance:

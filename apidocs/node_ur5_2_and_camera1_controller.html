@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>node_ur5_2_and_camera1_controller module &mdash; Vargi Bot 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="node_ur5_1_pick_and_place_controller module" href="node_ur5_1_pick_and_place_controller.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Vargi Bot
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">vargi-bot</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="node_iot_ros_bridge_action_client.html">node_iot_ros_bridge_action_client module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="node_ur5_1_pick_and_place_controller.html">node_ur5_1_pick_and_place_controller module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">node_ur5_2_and_camera1_controller module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Vargi Bot</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">vargi-bot</a> &raquo;</li>
+        
+      <li>node_ur5_2_and_camera1_controller module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/node_ur5_2_and_camera1_controller.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-node_ur5_2_and_camera1_controller">
+<span id="node-ur5-2-and-camera1-controller-module"></span><h1>node_ur5_2_and_camera1_controller module<a class="headerlink" href="#module-node_ur5_2_and_camera1_controller" title="Permalink to this headline">¶</a></h1>
+<p>This node is controlling ur5_2,camera1 and it is also</p>
+<p>responsible for detecting color of each package
+using 2d camera [camera1]
+and mapping these colors to their names
+this node functions:-
+1) start/stop the conveyor belt
+2) map color of package with their name using camera1
+3) stop packages just below ur5_2 home pose
+4) grip packages and play planned path to the</p>
+<blockquote>
+<div>desired bin after checking the color of package.</div></blockquote>
+<dl class="class">
+<dt id="node_ur5_2_and_camera1_controller.Camera1">
+<em class="property">class </em><code class="descclassname">node_ur5_2_and_camera1_controller.</code><code class="descname">Camera1</code><a class="headerlink" href="#node_ur5_2_and_camera1_controller.Camera1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains all the fucntions of 2d camera which will be used to</p>
+<p>detect the package in the shelf.</p>
+<dl class="method">
+<dt id="node_ur5_2_and_camera1_controller.Camera1.callback">
+<code class="descname">callback</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.Camera1.callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>This Callback is responsible for mapping packages with their color.</p>
+<p>for mapping the colors we first take the image from camera1 and
+than crop this image so that only region of interest is present
+in cropped image than we use this cropped image to get qr_data.</p>
+<p># Ref:
+# <a class="reference external" href="https://stackoverflow.com/questions/9084609/how-to-copy-a-image-region-using-opencv-in-python">https://stackoverflow.com/questions/9084609/how-to-copy-a-image-region-using-opencv-in-python</a>
+# <a class="reference external" href="https://stackoverflow.com/questions/15589517/how-to-crop-an-image-in-opencv-using-python">https://stackoverflow.com/questions/15589517/how-to-crop-an-image-in-opencv-using-python</a></p>
+<p>for eg, if we want the color of packagen00 we first take the image, now
+we know that packagen00 lies in a square made with points
+(100,300)[top left vertex](250,450)[bottom right vertex] so this is the
+region of interest for packagen00 now we crop this the image to get
+only region of interest [ROI] and send this cropped image with only
+packagen00 to function get_qr_data() which gives us the color of
+package00 now we map this color with box_name in a global list
+called PACKAGES_WITH_MAPPED_COLOR and using
+this data later on.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="node_ur5_2_and_camera1_controller.Camera1.get_dominant_colour">
+<code class="descname">get_dominant_colour</code><span class="sig-paren">(</span><em>arg_img</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.Camera1.get_dominant_colour" title="Permalink to this definition">¶</a></dt>
+<dd><p>This functions is used to get the color of packages</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>arg_img</strong> – image to search for dominant color.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dominant color in the image.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="node_ur5_2_and_camera1_controller.Camera1.get_qr_data">
+<code class="descname">get_qr_data</code><span class="sig-paren">(</span><em>arg_image</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.Camera1.get_qr_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this function to decode the qr code</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>arg_img</strong> – image of qr_code.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">data recieved after decoding qr code.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="node_ur5_2_and_camera1_controller.Ur5Moveit">
+<em class="property">class </em><code class="descclassname">node_ur5_2_and_camera1_controller.</code><code class="descname">Ur5Moveit</code><span class="sig-paren">(</span><em>arg_robot_name</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.Ur5Moveit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains all the function to control ur5_2 and functions</p>
+<p>which are used to ship the orders.</p>
+<dl class="method">
+<dt id="node_ur5_2_and_camera1_controller.Ur5Moveit.clear_octomap">
+<code class="descname">clear_octomap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.Ur5Moveit.clear_octomap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call service proxy.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="node_ur5_2_and_camera1_controller.Ur5Moveit.hard_set_joint_angles">
+<code class="descname">hard_set_joint_angles</code><span class="sig-paren">(</span><em>arg_list_joint_angles</em>, <em>arg_max_attempts</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.Ur5Moveit.hard_set_joint_angles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set joint angles of ur5 according to</p>
+<p>joints given, if fail to set joint angles it retries
+upto arg_max_attempts times.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>arg_list_joint_angles</strong> – (list) contain all the joints values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Param_max_attempts:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">(int) max number of tries.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="node_ur5_2_and_camera1_controller.Ur5Moveit.moveit_hard_play_planned_path_from_file">
+<code class="descname">moveit_hard_play_planned_path_from_file</code><span class="sig-paren">(</span><em>arg_file_path</em>, <em>arg_file_name</em>, <em>arg_max_attempts</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.Ur5Moveit.moveit_hard_play_planned_path_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>make ur5 follow a saved path and</p>
+<p>if fails than  retires arg_max_attempts times.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>arg_file_path</strong> – (str)path of the desired config file.</li>
+<li><strong>arg_file_name</strong> – (str)name of the config file.</li>
+<li><strong>arg_max_attempts</strong> – (int) maximum attempts to plat path.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="node_ur5_2_and_camera1_controller.Ur5Moveit.moveit_play_planned_path_from_file">
+<code class="descname">moveit_play_planned_path_from_file</code><span class="sig-paren">(</span><em>arg_file_path</em>, <em>arg_file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.Ur5Moveit.moveit_play_planned_path_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>make ur5 follow a saved path</p>
+<p>in config folder</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>arg_file_path</strong> – (str)path of the desired config file</li>
+<li><strong>arg_file_name</strong> – (str)name of the config file</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="node_ur5_2_and_camera1_controller.Ur5Moveit.set_joint_angles">
+<code class="descname">set_joint_angles</code><span class="sig-paren">(</span><em>arg_list_joint_angles</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.Ur5Moveit.set_joint_angles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set joint angles of ur5 according to</p>
+<p>joint angles given.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>arg_list_joint_angles</strong> – (list)contain all the joint angles of ur5</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(boolean)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="node_ur5_2_and_camera1_controller.activate_conveyor">
+<code class="descclassname">node_ur5_2_and_camera1_controller.</code><code class="descname">activate_conveyor</code><span class="sig-paren">(</span><em>power</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.activate_conveyor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creating a service client.</p>
+<p>to call the ros service to give power to conveyor belt in range 0 to 100.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>power</strong> – (int) max 100</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="node_ur5_2_and_camera1_controller.activate_vacuum_gripper">
+<code class="descclassname">node_ur5_2_and_camera1_controller.</code><code class="descname">activate_vacuum_gripper</code><span class="sig-paren">(</span><em>isGripped</em>, <em>ur5_model</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.activate_vacuum_gripper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creating a service client.</p>
+<p>to call the ros service for activating/deactivating vaccum gripper</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>isGripped</strong> – 0 -&gt; deactivate gripper, 1-&gt;activate gripper</li>
+<li><strong>ur5_model</strong> – ur5 arm to activate or deactivate gripper.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="node_ur5_2_and_camera1_controller.cameraCallback">
+<code class="descclassname">node_ur5_2_and_camera1_controller.</code><code class="descname">cameraCallback</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.cameraCallback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logical Camera Subscriber callback.</p>
+<p>responsible for detecting packages and as soon as
+a package is found and reaches at the gripping position
+this function will stop the conveyor belt.
+:parma msg: data recieved from subscription</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="node_ur5_2_and_camera1_controller.main">
+<code class="descclassname">node_ur5_2_and_camera1_controller.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="node_ur5_2_and_camera1_controller.picked_order_subscriber">
+<code class="descclassname">node_ur5_2_and_camera1_controller.</code><code class="descname">picked_order_subscriber</code><span class="sig-paren">(</span><em>picked_order</em><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.picked_order_subscriber" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is getting the orders in sequence as</p>
+<p>they are processed by node_ur5_1 and these orders
+are saved in a list to use while updating
+orderShipped sheet of IMS.</p>
+<p>:param picked_order:(string) order to be shipped</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="node_ur5_2_and_camera1_controller.update_orders_shipped">
+<code class="descclassname">node_ur5_2_and_camera1_controller.</code><code class="descname">update_orders_shipped</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#node_ur5_2_and_camera1_controller.update_orders_shipped" title="Permalink to this definition">¶</a></dt>
+<dd><p>As soon as an order is shipped by ur5_2 this</p>
+<p>function is called to update orderShipped sheet of
+IMS, using a list all_picked_order_in_sequence.
+As the sequence in which incoming orders are coming is not same
+as the sequence in which orders are processing
+that’s why we can’t use formulae for updating some cells of Dashboard
+because these cells are dynamic and may change due to different
+priority that’s why this function also update some cells of Dahshboard
+by finding required cell using order_id.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="node_ur5_1_pick_and_place_controller.html" class="btn btn-neutral float-left" title="node_ur5_1_pick_and_place_controller module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Mohd Ashif.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

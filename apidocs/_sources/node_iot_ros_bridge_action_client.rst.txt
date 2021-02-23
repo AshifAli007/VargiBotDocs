@@ -1,0 +1,7 @@
+node\_iot\_ros\_bridge\_action\_client module
+=============================================
+
+.. automodule:: node_iot_ros_bridge_action_client
+    :members:
+    :undoc-members:
+    :show-inheritance:
